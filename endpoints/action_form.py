@@ -1,41 +1,35 @@
 import json
 
-print('Loading action_form function')
-
-def action_form(event, context):
-  print("action_form received event: " + json.dumps(event, indent=2))
-  # print("action_form received context: " + json.dumps(context, indent=2))
+def action_form(request):
+  payload = request.get_json()
+  print("action_form received request:", payload)
   
   form = [
     {
-      "name": "table_name", 
-      "label": "Table Name",
+      "name": "request_label", 
+      "label": "Request Label",
       "description": "Defaults to report name if left blank", 
-      "type":"string", 
+      "type": "string", 
       "required": False, 
       "sensitive": True
     },
     {
-      "name": "insert_mode", 
-      "label": "Select Insert Mode", 
+      "name": "request_type", 
+      "label": "Select Request Type", 
       "type":"select",
       "required": True, 
       "sensitive": False, 
       "options": [
         {
-          "name": "append",
-          "label": "Append Data"
+          "name": "images",
+          "label": "Send Link to Image Collection"
         },
         {
-          "name": "upsert", 
-          "label": "Update and Insert Data"
+          "name": "approval_only", 
+          "label": "Send Request for Manual Approval"
         },
-        {
-          "name": "new", 
-          "label": "Create New Table"
-        }
       ]
     }
   ]
 
-  return form
+  return json.dumps(form)

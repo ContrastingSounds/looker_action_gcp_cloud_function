@@ -1,13 +1,8 @@
 import json
 
-print('Loading action_execute function')
-
-def action_execute(event, context):
-    print('action_form received event of type:', type(event))
-    print('event keys:', event.keys())
-    print('event body:', event['body'])
-    
-    
+def action_execute(request):
+    payload = request.get_json()
+    print('action_execute received request:', payload)
     
     return {
         'statusCode': 200,
