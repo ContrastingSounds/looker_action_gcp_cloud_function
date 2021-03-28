@@ -1,5 +1,5 @@
 import json
-import looker-sdk
+import looker_sdk
 
 def action_execute(request):
     payload = request.get_json()

@@ -1,1 +1,1 @@
-looker-sdk>=21.0.0
+looker_sdk>=21.0.0
